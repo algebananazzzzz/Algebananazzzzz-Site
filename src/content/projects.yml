@@ -51,6 +51,9 @@ projects:
       actions:
         - text: Repo
           link: https://github.com/algebananazzzzz/PolymerBase
+        - text: Blog
+          color: purple
+          link: /blog/polymer
   - AnelaBot:
       description: A telegram reminder bot built with Natural Language Processing (AWS Comprehend)
       additional_description: Utilizes a combination of Named Entity Recognition (NER) and Syntactic Analysis to extract dates from reminders. Deployed to Serverless AWS resources.

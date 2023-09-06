@@ -8,8 +8,8 @@
             {
                 "languages": [
                     "javascript",
-                    "css",
-                    "markup"
+                    "bash",
+                    "yaml"
                 ],
                 "plugins": [
                     "show-language"

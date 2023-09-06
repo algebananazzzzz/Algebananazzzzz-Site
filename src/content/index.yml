@@ -88,6 +88,9 @@ projects:
         actions:
           - text: Repo
             link: https://github.com/algebananazzzzz/PolymerBase
+          - text: Blog
+            color: purple
+            link: /blog/polymer
     - AnelaBot:
         description: A telegram reminder bot built with Natural Language Processing (AWS Comprehend)
         date: "2023"

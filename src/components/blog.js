@@ -35,7 +35,7 @@ const BlogComponent = ({ children }) => {
                                     <Link className="group flex items-center gap-x-6" to="/blog/polymer">
                                         <div className="grow">
                                             <span className="text-sm font-bold text-gray-800 group-hover:text-blue-600 dark:text-gray-200 dark:group-hover:text-blue-500">
-                                                Polymer: A Mature CI/CD Framework
+                                                Polymer: Building Mature CI/CD pipelines
                                             </span>
                                         </div>
 
