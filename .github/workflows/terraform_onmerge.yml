@@ -56,6 +56,25 @@ jobs:
           export TF_WORKSPACE=${TF_VAR_application_name}-${TF_VAR_application_stage}
           terraform init -input=false
 
+      - name: Create Workspace and Init
+        if: steps.init.outcome == 'failure'
+        run: |
+          export TF_WORKSPACE=${TF_VAR_application_name}-${TF_VAR_application_stage}
+          export WORKSPACE_ID=$(curl \
+          --header "Authorization: Bearer ${{ secrets.TF_API_TOKEN }}" \
+          --header "Content-Type: application/vnd.api+json" \
+          --request POST \
+          --data '{"data": {"type": "workspaces", "attributes": {"name": "'${TF_WORKSPACE}'"}}}' \
+          https://app.terraform.io/api/v2/organizations/${TF_CLOUD_ORGANIZATION}/workspaces | python3 -c "import sys, json; print(json.load(sys.stdin)['data']['id'])")
+          echo $WORKSPACE_ID
+          curl \
+          --header "Authorization: Bearer ${{ secrets.TF_API_TOKEN }}" \
+          --header "Content-Type: application/vnd.api+json" \
+          --request POST \
+          --data '{"data": [{"type": "tags","attributes": {"name": "github-actions"}}]}' \
+          https://app.terraform.io/api/v2/workspaces/${WORKSPACE_ID}/relationships/tags
+          terraform init -input=false
+
       - name: TerraformValidate
         id: validate
         run: terraform validate -no-color
