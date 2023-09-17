@@ -3,7 +3,7 @@
  */
 const yaml = require('js-yaml');
 const fs = require('fs');
-const stage = process.env.STAGE ? process.env.STAGE : 'dev'
+const stage = process.env.TF_VAR_application_stage ? process.env.TF_VAR_application_stage : 'dev'
 // Load environment variables from YAML file
 const yamlConfig = yaml.load(
   fs.readFileSync(`./.polymer/.config/${stage}.env.yml`, 'utf-8')
