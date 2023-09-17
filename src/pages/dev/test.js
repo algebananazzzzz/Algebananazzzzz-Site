@@ -7,26 +7,6 @@ import PageContent from '../../content/blog/nocturnal.yml'
 const IndexPage = () => {
     const [pageContent, setPageContent] = useState(null);
 
-    useEffect(() => {
-        Prism.highlightAll()
-
-        const fetchPageContent = async () => {
-            const elements = await Promise.all(
-                PageContent.content.map(async (content) => {
-                    if (typeof content === 'string') {
-                        return <p className="text-base md:text-lg text-gray-800 dark:text-gray-200 text-justify" dangerouslySetInnerHTML={{ __html: content }}></p>
-                    } else {
-                        return getElement(Object.keys(content)[0], Object.values(content)[0]);
-                    }
-                })
-            );
-            setPageContent(elements);
-
-        }
-        fetchPageContent()
-
-    }, [getElement])
-
     const getElement = async (type, value) => {
         if (type === "h3") {
             return <h3 className="text-3xl pt-7 lg:pt-10 font-semibold dark:text-white">{value}</h3>
@@ -106,6 +86,26 @@ const IndexPage = () => {
 
         }
     }
+
+    useEffect(() => {
+        Prism.highlightAll()
+
+        const fetchPageContent = async () => {
+            const elements = await Promise.all(
+                PageContent.content.map(async (content) => {
+                    if (typeof content === 'string') {
+                        return <p className="text-base md:text-lg text-gray-800 dark:text-gray-200 text-justify" dangerouslySetInnerHTML={{ __html: content }}></p>
+                    } else {
+                        return getElement(Object.keys(content)[0], Object.values(content)[0]);
+                    }
+                })
+            );
+            setPageContent(elements);
+
+        }
+        fetchPageContent()
+
+    }, [getElement])
 
     return (
         <BlogComponent>
