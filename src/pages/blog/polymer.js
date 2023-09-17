@@ -12,7 +12,7 @@ const IndexPage = () => {
     return (
         <BlogComponent>
             <div className="space-y-5 lg:space-y-8">
-                <h2 className="text-3xl font-bold lg:text-4xl lg:text-5xl dark:text-white">Polymer: Building Mature CI/CD framework</h2>
+                <h2 className="text-3xl font-bold lg:text-4xl lg:text-5xl dark:text-white">Polymer: Building Mature CI/CD Pipelines</h2>
 
                 <div className="flex items-center gap-x-5">
                     <span className="inline-flex items-center gap-1.5 py-1 px-3 sm:py-2 sm:px-4 rounded-full text-xs sm:text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-800 dark:text-gray-200">

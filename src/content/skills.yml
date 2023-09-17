@@ -1,6 +1,6 @@
 intro:
   text:
-    - Browse through my professional certificates and skillsets that demonstrates my areas of proficiency within the expansive domain of technology
+    - Browse through my professional certificates and skillsets that demonstrates my areas of proficiency
 endeavourList:
   - text: I aspire to delve more into DevOps and GPT technologies
     svg:
@@ -67,5 +67,5 @@ developerskills:
   - Experience in using NLP for human text analysis
 devopsskills:
   - Adept in harnessing AWS Cloud Infrastructure to integrate scalable, serverless microservices into development
-  - Seasoned in using Terraform IaC (InfrastructureApollo-GraphQl as Code) modules to provision resources
+  - Seasoned in crafting Terraform IaC (Infrastructure as Code) modules to provision resources
   - Familiar with using GitHub Actions to craft CI/CD pipelines with staging environments
