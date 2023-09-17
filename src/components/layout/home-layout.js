@@ -29,18 +29,16 @@ const HomeLayout = ({ children }) => {
                 <div className="max-w-7xl snap-x w-full flex justify-between items-center px-4 sm:px-6 lg:px-8 mx-auto">
                     <div className='flex'>
                         <div className="snap-center shrink-0 pr-2 sm:pr-4 md:pr-8 text-gray-700 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500">
-                            <Link activeClassName='bg-clip-text bg-gradient-to-l from-yellow-600 to-rose-600 text-transparent dark:from-yellow-400 dark:to-rose-500' className="inline-flex items-center" to="/blog/nocturnal">Blog</Link>
+                            <Link activeClassName='bg-clip-text bg-gradient-to-l from-yellow-600 to-rose-600 text-transparent dark:from-yellow-400 dark:to-rose-500' className="inline-flex items-center" to="/skills">Skills</Link>
                         </div>
                         <div className="snap-center shrink-0 pr-2 sm:pr-4 md:pr-8 text-gray-700 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500">
-                            <Link activeClassName='bg-clip-text bg-gradient-to-l from-teal-600 to-yellow-500 text-transparent dark:from-teal-400 dark:to-yellow-400' className="inline-flex items-center" to="/skills">Skills</Link>
+                            <Link activeClassName='bg-clip-text bg-gradient-to-l from-teal-600 to-yellow-500 text-transparent dark:from-teal-400 dark:to-yellow-400' className="inline-flex items-center" to="/projects">Projects</Link>
                         </div>
                         <div className="snap-center shrink-0 pr-2 sm:pr-4 md:pr-8 text-gray-700 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500">
-
-                            <Link activeClassName='bg-clip-text bg-gradient-to-l from-indigo-600 to-teal-500 text-transparent dark:from-blue-500 dark:to-teal-400' className="inline-flex items-center" to="/projects">Projects</Link>
+                            <Link activeClassName='bg-clip-text bg-gradient-to-l from-indigo-600 to-teal-500 text-transparent dark:from-blue-500 dark:to-teal-400' className="inline-flex items-center" to="/experiences">Experiences</Link>
                         </div>
                         <div className="snap-center shrink-0 pr-2 sm:pr-4 md:pr-8 text-gray-700 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500">
-
-                            <Link activeClassName='bg-clip-text bg-gradient-to-l from-pink-600 to-indigo-500 text-transparent dark:from-pink-500 dark:to-blue-500' className="inline-flex items-center" to="/experiences">Experiences</Link>
+                            <Link activeClassName='bg-clip-text bg-gradient-to-l from-pink-600 to-indigo-500 text-transparent dark:from-pink-500 dark:to-blue-500' className="inline-flex items-center" to="/blog/nocturnal">Blog</Link>
                         </div>
                         <div className="snap-center shrink-0 pr-2 sm:pr-4 md:pr-8 text-gray-800 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500">
                             <a href='https://algebananazzzzz.github.io/Resume.pdf' target='blank'>
