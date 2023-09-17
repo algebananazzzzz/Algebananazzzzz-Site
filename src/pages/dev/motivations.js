@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import HomeLayout from "../components/layout/home-layout"
+import HomeLayout from "../../components/layout/home-layout"
 
 const IndexPage = () => {
   return (

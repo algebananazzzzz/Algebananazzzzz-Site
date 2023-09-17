@@ -10,14 +10,10 @@ const yamlConfig = yaml.load(
 );
 
 var target_bucket = null;
-let application_name;
 
 if (yamlConfig) {
   Object.entries(yamlConfig).forEach(([key, value]) => {
-    if (key === 'application_name') {
-      application_name = value
-      process.env.GATSBY_APPLICATION_NAME = value
-    } else if (key === 'deployment') {
+    if (key === 'deployment') {
       target_bucket = value.target_bucket
     } else {
       process.env[key] = value;

@@ -1,0 +1,49 @@
+title: "Nocturnal: Create your own online portfolio page!"
+date: August 31, 2023
+
+content:
+  - Creating a portfolio website serves as a powerful means to elevate your online presence, and IMO is the simplest yet most effective first step to securing opportunities and impressing stakeholders! This blog is a Step-By-Step guide tailored to help you craft your very own portfolio page using the Nocturnal template (used to create this site) in as little as 15 minutes!
+  - No prerequisites required! This blog is specifically tailored for novice developers aspiring to take their first steps in the domain of Computing :p
+  - imagegroup:
+      caption: I named my template "Nocturnal" in spirit of the quiet nights I spent nurturing my passion in this domain.
+      grid_cols: 2
+      images: 
+        - image: nocturnal_dark.png
+          grid_cols_sm: 2
+          grid_cols_md: 1
+        - image: nocturnal_light.png
+          grid_cols_sm: 2
+          grid_cols_md: 1
+  - h3: Table of Contents
+  - For those interested in leveraging AWS resources to provision the site, please focus solely on Step 2, and for deployment instructions, please consult the Deployment section in the <a className="text-blue-600 decoration-2 hover:underline font-medium" to="/blog/polymer">Polymer</a> documentation.
+  - table_of_contents:
+    - header: "Step 1: Create new Gatsby project"
+      text: "Step 1: Create new Gatsby project"
+    - header: "Step 2: Personalise Portfolio Content"
+      text: "Step 2: Personalise Portfolio Content"
+    - header: "Step 3: Using Gatsby to Build Static Pages"
+      text: "Step 3: Using Gatsby to Build Static Pages"
+    - header: "Step 4: Deploy to Github Pages"
+      text: "Step 4: Deploy to Github Pages"
+  - list_bullet:
+    - "Step 1: Create new Gatsby project"
+    - "Step 2: Personalise Portfolio Content"
+    - "Step 3: Using Gatsby to Build Static Pages"
+    - "Step 4: Deploy to Github Pages"
+  - h3: "Step 1: Create new Gatsby project"
+  - In creating Nocturnal, I used the Gatsby Framework to generate production-ready static websites, ReactJS to craft dynamic and interactive components, and TailwindCSS for styling the interface.
+  - Analogically, React specifies the blueprint of a house while Tailwind helps in decorating the furniture and rooms. Finally, GatsbyJS acts as a 3D printer translating the design into a tangible, fully-formed house.
+  - While the "heavy lifting" on React or Tailwind is already taken care of, we still need to download GatsbyJS to generate the final production build and preview the development site.
+  - h4: Install Prerequisites
+  - "Before you begin, ensure you have met the following requirements:"
+  - list_numerical:
+    - 
+      - "<b>Node.js and npm</b>: To develop and build the project, you need to have Node.js and npm (Node Package Manager) installed. Node.js allows you to use JavaScript to build applications, notably React, Apollo applications."
+      - list_bullet:
+        - "<b>Node.js</b>: Download from the <A >official Node.js website</A>. We recommend using Node.js version 14.17.0 or higher."
+        - "<b>NPM (Node Package Manager)</b>: NPM is usually included with Node.js installation. If NPM is not installed, you can download it from the <A>official npm website</A>."
+    - 
+      - "<b>Gatsby CLI</b>: This project uses Gatsby, so you'll need the Gatsby CLI (Command Line Interface) to manage and build your site. You can install it globally by running:"
+      - code: npm install -g gatsby-cli
+        lang: bash
+  

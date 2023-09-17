@@ -1,18 +1,18 @@
 import React, { useEffect } from "react"
 import Prism from "prismjs"
-import DirectoryScreenshot from '../../static/nocturnal_dir.png'
-import NavbarPng from '../../static/nocturnal_navbar.png'
-import HomepagePng from '../../static/nocturnal_homepage.png'
-import SkillsPng from '../../static/nocturnal_skills.png'
-import ProjectsPng from '../../static/nocturnal_projects.png'
-import ExperiencesPng from '../../static/nocturnal_experiences.png'
+import DirectoryScreenshot from '../../static/blog/nocturnal/nocturnal_dir.png'
+import NavbarPng from '../../static/blog/nocturnal/nocturnal_navbar.png'
+import HomepagePng from '../../static/blog/nocturnal/nocturnal_homepage.png'
+import SkillsPng from '../../static/blog/nocturnal/nocturnal_skills.png'
+import ProjectsPng from '../../static/blog/nocturnal/nocturnal_projects.png'
+import ExperiencesPng from '../../static/blog/nocturnal/nocturnal_experiences.png'
 import BlogComponent from "../../components/blog"
-import DarkPng from '../../static/nocturnal_dark.png'
-import LightPng from '../../static/nocturnal_light.png'
-import PagesPng from '../../static/nocturnal_pages.png'
-import GitPng from '../../static/nocturnal_git.png'
-import DemoPng from '../../static/nocturnal_demo.png'
+import DarkPng from '../../static/blog/nocturnal/nocturnal_dark.png'
+import LightPng from '../../static/blog/nocturnal/nocturnal_light.png'
+import PagesPng from '../../static/blog/nocturnal/nocturnal_pages.png'
+import GitPng from '../../static/blog/nocturnal/nocturnal_git.png'
 import CopyButton from "../../components/ui/copybutton";
+import { Link } from "gatsby"
 
 
 const IndexPage = () => {
@@ -35,21 +35,16 @@ const IndexPage = () => {
                 <p className="text-base md:text-lg text-gray-800 dark:text-gray-200 text-justify">Creating a portfolio website serves as a powerful means to elevate your online presence, and IMO is the <b>simplest</b> yet <b>most effective first step</b> to securing opportunities and impressing stakeholders! This blog is a Step-By-Step guide tailored to help you craft your very own portfolio page using the Nocturnal template (used to create this site) in as little as <b>15 minutes</b>!
                 </p>
 
-                <p className="text-base md:text-lg text-gray-800 dark:text-gray-200 text-justify">No prerequisites are necessary! This blog is specifically tailored for novice developers aspiring to take their first steps in the domain of Computing e.g. after JC/NS, before your NUS CS course starts :p
+                <p className="text-base md:text-lg text-gray-800 dark:text-gray-200 text-justify">No prerequisites required! This blog is specifically tailored for novice developers aspiring to take their first steps in the domain of Computing :p
                 </p>
 
                 <div className="text-center">
                     <div className="grid grid-cols-2 gap-3">
-                        <div className="col-span-2 md:col-span-1 grid gap-3">
-                            <figure className="relative w-full">
-                                <img alt="" className="w-full h-full object-cover rounded-xl" src={DarkPng} />
-                            </figure>
-                            <figure className="relative w-full">
-                                <img alt="" className="w-full h-full object-cover rounded-xl" src={LightPng} />
-                            </figure>
-                        </div>
-                        <figure className="relative w-full hidden md:block">
-                            <img alt="" className="w-full object-cover rounded-xl" src={DemoPng} />
+                        <figure className="col-span-2 md:col-span-1 relative w-full">
+                            <img alt="" className="w-full h-full object-cover rounded-xl" src={DarkPng} />
+                        </figure>
+                        <figure className="col-span-2 md:col-span-1 relative w-full">
+                            <img alt="" className="w-full h-full object-cover rounded-xl" src={LightPng} />
                         </figure>
                     </div>
 
@@ -57,7 +52,16 @@ const IndexPage = () => {
                         I named my template "Nocturnal" in spirit of the quiet nights I spent nurturing my passion in this domain.
                     </span>
                 </div>
-
+                <h3 className="text-3xl pt-7 lg:pt-10 font-semibold dark:text-white">Table of Contents</h3>
+                <p className="text-base md:text-lg text-gray-800 dark:text-gray-200 text-justify">
+                    For those interested in leveraging AWS resources to provision the site, please focus solely on Step 2, and for deployment instructions, please consult the Deployment section in the <Link className="text-blue-600 decoration-2 hover:underline font-medium" to="/blog/polymer">Polymer</Link> documentation.
+                </p>
+                <ul className="list-disc list-outside space-y-3 pl-5 text-base md:text-lg text-gray-800 dark:text-gray-200 text-justify">
+                    <li className="pl-2">Step 1: Create new Gatsby project</li>
+                    <li className="pl-2">Step 2: Personalise Portfolio Content</li>
+                    <li className="pl-2">Step 3: Using Gatsby to Build Static Pages</li>
+                    <li className="pl-2">Step 4: Deploy to Github Pages</li>
+                </ul>
                 <h3 className="text-3xl pt-7 lg:pt-10 font-semibold dark:text-white">Step 1: Create new Gatsby project</h3>
 
                 <p className="text-base md:text-lg text-gray-800 dark:text-gray-200 text-justify">
@@ -70,6 +74,7 @@ const IndexPage = () => {
                 <p className="text-base md:text-lg text-gray-800 dark:text-gray-200 text-justify">
                     While the "heavy lifting" on React or Tailwind is already taken care of, we still need to download GatsbyJS to generate the final production build and preview the development site.
                 </p>
+
                 <div className="space-y-3">
                     <h4 className="text-2xl pt-4 lg:pt-7 font-semibold dark:text-white">1. Install NodeJs and NPM</h4>
                     <p className="text-base md:text-lg text-gray-800 dark:text-gray-200 text-justify">
@@ -83,7 +88,6 @@ const IndexPage = () => {
                         Here are <a className="text-blue-600 decoration-2 hover:underline font-medium" href="https://www.gatsbyjs.com/docs/tutorial/getting-started/part-0/#git" target="blank" >detailed instructions</a> on how to install Git on your operating system.
                     </p>
                 </div>
-
                 <div className="space-y-3">
                     <div className="flex justify-between items-center mb-2">
                         <h4 className="text-2xl pt-4 lg:pt-7 font-semibold dark:text-white">3. Install Gatsby Client</h4>
@@ -95,7 +99,7 @@ const IndexPage = () => {
                     </p>
                     <pre className="text-sm overflow-x-scroll">
                         <code className="language-bash">
-                            {`$ npm install -g gatsby-cli`}
+                            {`npm install -g gatsby-cli`}
                         </code>
                     </pre>
                 </div>
@@ -110,7 +114,7 @@ const IndexPage = () => {
                     </p>
                     <pre className="text-sm overflow-x-scroll">
                         <code className="language-bash">
-                            {`$ gatsby new MyPortfolio https://github.com/algebananazzzzz/Nocturnal.git`}
+                            {`gatsby new MyPortfolio https://github.com/algebananazzzzz/Nocturnal.git`}
                         </code>
                     </pre>
                 </div>
@@ -125,8 +129,8 @@ const IndexPage = () => {
                     </p>
                     <pre className="text-sm overflow-x-scroll">
                         <code className="language-bash">
-                            {`$ cd MyPortfolio
-$ gatsby develop`}
+                            {`cd MyPortfolio
+gatsby develop`}
                         </code>
                     </pre>
                 </div>
@@ -333,7 +337,7 @@ reactjs:
                     </p>
                     <pre className="text-sm overflow-x-scroll">
                         <code className="language-bash">
-                            {`$ gatsby build`}
+                            {`gatsby build`}
                         </code>
                     </pre>
                 </div>
@@ -365,7 +369,7 @@ reactjs:
                     </p>
                     <pre className="text-sm overflow-x-scroll">
                         <code className="language-bash">
-                            {'$ cd public/\n$ git init\n$ git add -A\n$ git commit -m "Initial Commit"'}
+                            {'cd public/\ngit init\ngit add -A\ngit commit -m "Initial Commit"'}
                         </code>
                     </pre>
                 </div>
@@ -376,7 +380,7 @@ reactjs:
                     </p>
                     <pre className="text-sm overflow-x-scroll">
                         <code className="language-bash">
-                            {'$ git remote add origin...\n$ git push --set-upstream origin'}
+                            {'git remote add origin...\ngit push --set-upstream origin'}
                         </code>
                     </pre>
                 </div>
