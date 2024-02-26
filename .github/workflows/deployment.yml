@@ -33,7 +33,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ vars.AWS_REGION }}
       - run: echo "ENV=dev" >> $GITHUB_ENV
-      - run: echo "TF_WORKSPACE=$ENV-webappdb" >> $GITHUB_ENV
+      - run: echo "TF_WORKSPACE=$ENV-web" >> $GITHUB_ENV
       - uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: "1.5.0"
@@ -41,6 +41,7 @@ jobs:
         id: init
         working-directory: infra
         run: terraform init -input=false
+      - run: terraform workspace select -or-create $TF_WORKSPACE
       - name: Terraform Plan
         id: plan
         working-directory: infra
@@ -50,7 +51,7 @@ jobs:
         working-directory: infra
         run: terraform apply -input=false --auto-approve output.tfplan
       - working-directory: infra
-        run: export DEST_BUCKET_NAME=$(terraform output -raw origin_bucket_name)
+        run: echo "DEST_BUCKET_NAME=$(terraform output -raw origin_bucket_name)" >> $GITHUB_ENV
       - uses: actions/download-artifact@master
         with:
           name: build-artifact
