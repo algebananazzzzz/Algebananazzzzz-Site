@@ -36,7 +36,7 @@ jobs:
       - run: echo "TF_WORKSPACE=$ENV-webappdb" >> $GITHUB_ENV
       - uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: "1.4.2"
+          terraform_version: "1.5.0"
       - name: Terraform Init
         id: init
         working-directory: infra
