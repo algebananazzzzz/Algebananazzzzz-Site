@@ -1,0 +1,60 @@
+name: "Deployment"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: npm install
+      - run: ./node_modules/.bin/gatsby build --prefix-paths  
+      - uses: actions/upload-artifact@master
+        with:
+          name: build-artifact
+          path: public/
+  deploy:
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - run: echo "ENV=dev" >> $GITHUB_ENV
+      - run: echo "TF_WORKSPACE=$ENV-webappdb" >> $GITHUB_ENV
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.4.2"
+      - name: Terraform Init
+        id: init
+        working-directory: infra
+        run: terraform init -input=false
+      - name: Terraform Plan
+        id: plan
+        working-directory: infra
+        run: terraform plan --var-file=config/$ENV.tfvars -out=output.tfplan -input=false
+      - name: Terraform Apply
+        id: apply
+        working-directory: infra
+        run: terraform apply -input=false --auto-approve output.tfplan
+      - working-directory: infra
+        run: export DEST_BUCKET_NAME=$(terraform output -raw origin_bucket_name)
+      - uses: actions/download-artifact@master
+        with:
+          name: build-artifact
+          path: public/
+      - name: Deploy bundle to S3
+        id: awscli_s3_sync
+        run: aws s3 sync --delete public s3://$DEST_BUCKET_NAME 

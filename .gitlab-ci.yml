@@ -45,10 +45,7 @@ terraform-apply:
     - terraform-plan
   after_script:
     - cd $TF_DIR
-    - ls
-    - terraform output -raw origin_bucket_name
     - echo "DEST_BUCKET_NAME=$(terraform output -raw origin_bucket_name)" > $CI_PROJECT_DIR/output.env
-    - cat $CI_PROJECT_DIR/output.env
   artifacts:
     reports:
       dotenv: $CI_PROJECT_DIR/output.env
