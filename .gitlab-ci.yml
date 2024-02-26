@@ -54,6 +54,7 @@ terraform-apply:
 s3-deploy:
   stage: deploy
   needs:
+    - gatsby-build
     - terraform-apply
   dependencies:
     - gatsby-build
