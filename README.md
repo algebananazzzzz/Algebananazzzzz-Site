@@ -1,3 +1,7 @@
+```shell
+aws s3 sync public/ s3://prd-web-s3-algebananazzzzz-site --profile algebananazzzzz --delete^C
+```
+
 
 ```shell
 git add -A

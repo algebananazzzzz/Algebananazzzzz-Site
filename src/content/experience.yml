@@ -1,0 +1,16 @@
+- "Workshop: EJC Unconference 2021":
+    description:
+      - Conducted an Unconference (workshop) in my Junior College with help from a website tutorial.
+      - Taught the basics of HTML, CSS and it's role in architecturing webpages. Participants are then guided to develop their own resumes, and deploy them as static websites in Github.
+    date: Aug 2021
+    actions:
+      - text: Website
+        link: https://algebananazzzzz.github.io/eunoiashining/tutorial/index.html
+- "Internship: Sustainable Lab Square":
+    description:
+      - As an Assistant Content Creator, developed sample AI software with Python’s NumPy, Pandas, Sklearn and Keras libraries without aid, including a functional AI software that pulls JSON data from a weather forecast API in a gardening watering project.
+      - Collaborated in a project to accurately perform Facial and Image Recognition utilising OpenVino inference engine and Neural Compute Stick, and mentored in a hackathon organised for youths, guiding older peers to the finals.
+    date: June - July 2018
+    actions:
+      - text: Recommendation letter
+        asset: reccltr_sl2.pdf

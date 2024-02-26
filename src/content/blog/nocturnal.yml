@@ -15,7 +15,7 @@ content:
           grid_cols_sm: 2
           grid_cols_md: 1
   - h3: Table of Contents
-  - For those interested in leveraging AWS resources to provision the site, please focus solely on Step 2, and for deployment instructions, please consult the Deployment section in the <a className="text-blue-600 decoration-2 hover:underline font-medium" to="/blog/polymer">Polymer</a> documentation.
+  - For those interested in leveraging AWS resources to provision the site, please focus solely on Step 2, and for deployment instructions, please consult the Deployment section in the <a to="/blog/polymer">Polymer documentation</a>.
   - table_of_contents:
     - header: "Step 1: Create new Gatsby project"
       text: "Step 1: Create new Gatsby project"
@@ -38,12 +38,42 @@ content:
   - "Before you begin, ensure you have met the following requirements:"
   - list_numerical:
     - 
-      - "<b>Node.js and npm</b>: To develop and build the project, you need to have Node.js and npm (Node Package Manager) installed. Node.js allows you to use JavaScript to build applications, notably React, Apollo applications."
+      - "<b>Node.js and npm</b>: To develop and build the project using Gatsby, you need to have Node.js and npm (Node Package Manager) installed."
       - list_bullet:
-        - "<b>Node.js</b>: Download from the <A >official Node.js website</A>. We recommend using Node.js version 14.17.0 or higher."
-        - "<b>NPM (Node Package Manager)</b>: NPM is usually included with Node.js installation. If NPM is not installed, you can download it from the <A>official npm website</A>."
+        - '<b>Node.js</b>: Download from the <a href="https://nodejs.org/">official Node.js website</a>. Node.js version must be 18 or higher.'
+        - '<b>NPM (Node Package Manager)</b>: NPM is usually included with Node.js installation. If NPM is not installed, you can download it from the <a href="https://www.npmjs.com/">official npm website</a>.'
     - 
       - "<b>Gatsby CLI</b>: This project uses Gatsby, so you'll need the Gatsby CLI (Command Line Interface) to manage and build your site. You can install it globally by running:"
-      - code: npm install -g gatsby-cli
+      - code: 
+          code: npm install -g gatsby-cli
+          lang: bash
+  - section:
+    - h4: Create New Project
+    - This command clones the codebase from Nocturnal's remote repository into your local machine and installs all required dependencies.
+    - code:
+        code: gatsby new MyPortfolio https://github.com/algebananazzzzz/Nocturnal.git
         lang: bash
-  
+  - section:
+    - h4: Preview Development Site
+    - This generates a live preview of the site at <a href="http://localhost:8000/">localhost:8000</a>. This allows you to preview site changes as you edit the site content in the next segment.
+    - code:
+        code: "cd MyPortfolio\ngatsby develop"
+        lang: bash
+  - h3: "Step 2: Personalise Portfolio Content"
+  - Open the folder (Ctrl-O) containing the code using your preferred code editor e.g. Visual Studio Code. Code editors are essentially text editors (like Microsoft Word), but tailored specifically for viewing and writing code. Here are the instructions to download Visual Studio Code.
+  - image:
+      image: nocturnal_dir.png
+      caption: You'll see this project directory.
+  - Do not be intimidated by the numerous files within the project directory! We will only touch the YAML configuration files within the src/content folder, which Nocturnal will source from for site content. Please follow the instructions outlined in this blog, and seek further clarififications in the comments provided in the YAML files.
+  - section:
+    - h4: 1. Introduction to SVGs (Scalable Vector Graphics)
+    - SVGs, unlike pixel-based formats like JPEG or PNG, use mathematical equations to depict shapes and colors. <a href="https://www.svgrepo.com/">SVGRepo</a> is a library of 500k+ Open-licensed SVG Vectors, which we can utilise to style our website with vibrant vectors!
+    - "Let's go to <a href=\"https://www.svgrepo.com/\">SVGRepo</a>, find an SVG of your choice, select \"edit vector\" and then paste the SVG code into a blank HTML file. You'll come across a generic format that looks like this:"
+    - code:
+        code: "<svg viewbox=\"0 0 x x\" fill=\"#color\" stroke=\"#color\" ...other_fields>\n  <d some_value>\n    <path d=\"super long value\" fill=\"#color\" stroke=\"#color\"></path>\n    <path d=\"super long value\" fill=\"#color\" stroke=\"#color\"></path>\n    ...other path elements\n  </d>\n</svg>"
+        lang: html
+    - list_numerical: 
+      - The "svg" parent element that configures the viewbox, fill (optional) and stroke (optional) colors.
+      - The "d" wrapping element, which we will ignore.
+      - The "path" elements, which configures the mathematical equations used to describe the SVG.
+    - Under `src/content`, open the `svgs.yml` file that defines skill icons (used in project, skills page). Feel free to add icons that represent your frequently used skills!

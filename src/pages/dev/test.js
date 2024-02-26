@@ -1,13 +1,29 @@
-import React, { useEffect, useState } from "react"
-import Prism from "prismjs"
+import React, { useCallback, useEffect, useState } from "react"
 import BlogComponent from "../../components/blog"
 import PageContent from '../../content/blog/nocturnal.yml'
-
+import parse from 'html-react-parser'
+import { Link } from "gatsby"
+import CodeBlock from "../../components/ui/code"
 
 const IndexPage = () => {
     const [pageContent, setPageContent] = useState(null);
 
-    const getElement = async (type, value) => {
+    const parseParagraph = useCallback((text) => {
+        return parse(`<p className="text-base md:text-lg text-gray-800 dark:text-gray-200 text-justify">${text}</p>`,
+            {
+                replace: ({ name, attribs, children }) => {
+                    if (name === 'a') {
+                        if (attribs.href) {
+                            return <a href={attribs.href} className="text-blue-600 decoration-2 hover:underline font-medium" target="blank">{children[0].data}</a>
+                        } else if (attribs.to) {
+                            return <Link className="text-blue-600 decoration-2 hover:underline font-medium" to={attribs.to}>{children[0].data}</Link>
+                        }
+                    }
+                }
+            })
+    }, [])
+
+    const getElement = useCallback(async (type, value) => {
         if (type === "h3") {
             return <h3 className="text-3xl pt-7 lg:pt-10 font-semibold dark:text-white">{value}</h3>
         } else if (type === "h4") {
@@ -39,62 +55,59 @@ const IndexPage = () => {
                 </div>
             );
 
-        }
-
-        else if (type === "list_bullet") {
-            return <ul className="list-disc list-outside space-y-3 pl-5 text-base md:text-lg text-gray-800 dark:text-gray-200 text-justify">
-                {value.map((value) => {
-                    if (typeof value === 'string') {
-                        return <li className="pl-2" dangerouslySetInnerHTML={{ __html: value }}></li>
-                    } else {
-                        return <li className="pl-2">{getElement(Object.keys(value)[0], Object.values(value)[0])}</li>
-                    }
-                })}
-            </ul>
-        }
-        else if (type === "list_numerical") {
+        } else if (type === "list_numerical" || type === "list_bullet") {
             const elements = await Promise.all(
                 value.map(async (item, index) => {
                     if (typeof item === 'object') {
                         const element = await Promise.all(
                             item.map(async (elem) => {
                                 if (typeof elem === 'string') {
-                                    return <p dangerouslySetInnerHTML={{ __html: elem }} className="text-base md:text-lg text-gray-800 dark:text-gray-200 text-justify"></p>
+                                    return parseParagraph(elem)
                                 } else {
-                                    console.log(elem)
                                     return await getElement(Object.keys(elem)[0], Object.values(elem)[0]);
                                 }
                             })
                         );
-                        console.log(element)
                         return <li key={index} className="pl-2 space-y-2">
                             {element}
                         </li>
                     } else {
                         return (
-                            <li key={index} className="pl-2" dangerouslySetInnerHTML={{ __html: item }}>
+                            <li key={index} className="pl-2">
+                                {parseParagraph(item)}
                             </li>
                         );
                     }
                 })
             );
 
-            return <ul className="list-decimal list-outside space-y-3 pl-5 text-base md:text-lg text-gray-800 dark:text-gray-200 text-justify">
+            return <ul className={`${type === "list_numerical" ? "list-decimal" : "list-disc"} list-outside space-y-3 pl-5 text-base md:text-lg text-gray-800 dark:text-gray-200 text-justify`}>
                 {elements}
             </ul>
         } else if (type === "code") {
+            return <CodeBlock code={value.code} header={value.header} lang={value.lang} copy={value.copy} ></CodeBlock>
+        } else if (type === "section") {
+            const elements = await Promise.all(
+                value.map(async (item) => {
+                    if (typeof item === 'object') {
+                        return await getElement(Object.keys(item)[0], Object.values(item)[0]);
+                    } else {
+                        return parseParagraph(item)
+                    }
+                })
+            );
 
+            return <div className="space-y-2">{elements}</div>
         }
-    }
+    }, [parseParagraph])
 
     useEffect(() => {
-        Prism.highlightAll()
 
         const fetchPageContent = async () => {
             const elements = await Promise.all(
                 PageContent.content.map(async (content) => {
                     if (typeof content === 'string') {
-                        return <p className="text-base md:text-lg text-gray-800 dark:text-gray-200 text-justify" dangerouslySetInnerHTML={{ __html: content }}></p>
+                        return parseParagraph(content)
                     } else {
                         return getElement(Object.keys(content)[0], Object.values(content)[0]);
                     }
@@ -105,7 +118,7 @@ const IndexPage = () => {
         }
         fetchPageContent()
 
-    }, [getElement])
+    }, [getElement, parseParagraph])
 
     return (
         <BlogComponent>

@@ -1,9 +1,10 @@
 # ignore all node_modules
-node_modules/
+**/node_modules/
+**/package-lock.json
 
 # ignore Gatsby build package and cache
-.cache/
-public
+**/.cache/
+**/public
 
 # Local .terraform directories
 **/.terraform/*
@@ -20,10 +21,6 @@ public
 *.tfstate
 *.tfstate.*
 *.terraform.lock.hcl
-
-# Exclude all .tfvars files
-*.tfvars
-*.tfvars.json
 
 # Ignore override files
 override.tf

@@ -16,7 +16,7 @@ const HomeLayout = ({ children }) => {
                     <Link className="flex-none text-lg md:text-xl font-semibold dark:text-white" to="/">{PageContent.title}</Link>
                 </div>
                 <div className="flex flex-row items-center gap-2">
-                    {PageContent.links.map((value) => {
+                    {PageContent.contact_buttons.map((value) => {
                         return <Svg link={value.link} svgViewBox={value.viewbox}>
                             {parse(value.path)}
                         </Svg>
@@ -29,31 +29,35 @@ const HomeLayout = ({ children }) => {
                 <div className="max-w-7xl snap-x w-full flex justify-between items-center px-4 sm:px-6 lg:px-8 mx-auto">
                     <div className='flex'>
                         <div className="snap-center shrink-0 pr-2 sm:pr-4 md:pr-8 text-gray-700 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500">
-                            <Link activeClassName='bg-clip-text bg-gradient-to-l from-yellow-600 to-rose-600 text-transparent dark:from-yellow-400 dark:to-rose-500' className="inline-flex items-center" to="/skills">Skills</Link>
+                            <Link activeClassName='bg-clip-text bg-gradient-to-l from-yellow-600 to-rose-600 text-transparent dark:from-orange-400 dark:to-rose-500' className="inline-flex items-center" to="/skills">Skills</Link>
                         </div>
                         <div className="snap-center shrink-0 pr-2 sm:pr-4 md:pr-8 text-gray-700 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500">
-                            <Link activeClassName='bg-clip-text bg-gradient-to-l from-teal-600 to-yellow-500 text-transparent dark:from-teal-400 dark:to-yellow-400' className="inline-flex items-center" to="/projects">Projects</Link>
+                            <Link activeClassName='bg-clip-text bg-gradient-to-l from-teal-600 to-yellow-500 text-transparent dark:from-teal-500 dark:to-yellow-400' className="inline-flex items-center" to="/projects">Projects</Link>
                         </div>
                         <div className="snap-center shrink-0 pr-2 sm:pr-4 md:pr-8 text-gray-700 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500">
-                            <Link activeClassName='bg-clip-text bg-gradient-to-l from-indigo-600 to-teal-500 text-transparent dark:from-blue-500 dark:to-teal-400' className="inline-flex items-center" to="/experiences">Experiences</Link>
+                            <Link activeClassName='bg-clip-text bg-gradient-to-l from-indigo-600 to-teal-500 text-transparent dark:from-pink-500 dark:to-indigo-600' className="inline-flex items-center" to="/experiences">Experiences</Link>
                         </div>
-                        <div className="snap-center shrink-0 pr-2 sm:pr-4 md:pr-8 text-gray-700 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500">
-                            <Link activeClassName='bg-clip-text bg-gradient-to-l from-pink-600 to-indigo-500 text-transparent dark:from-pink-500 dark:to-blue-500' className="inline-flex items-center" to="/blog/nocturnal">Blog</Link>
-                        </div>
-                        <div className="snap-center shrink-0 pr-2 sm:pr-4 md:pr-8 text-gray-800 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500">
-                            <a href='https://algebananazzzzz.github.io/Resume.pdf' target='blank'>
-                                <div className='inline-flex items-center gap-x-1'>
-                                    Resume
-                                    <svg className='w-3 h-3 md:w-5 md:h-5' viewBox="0 0 24 24" fill='none' stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path id="Vector" d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </svg>
-                                </div>
-                            </a>
+                        {PageContent.external_links.map((value) => {
+                            return <div className="snap-center shrink-0 pr-2 sm:pr-4 md:pr-8 text-gray-800 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-500">
+                                <a href={value.link} target='blank'>
+                                    <div className='inline-flex items-center gap-x-1'>
+                                        {value.title}
+                                        {/* <svg className='w-3 h-3 md:w-5 md:h-5' viewBox="0 0 24 24" fill='none' stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path id="Vector" d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg> */}
+                                        {/* <svg className='w-3 h-3 md:w-5 md:h-5' viewBox="0 0 16 16" fill="currentColor" stroke="currentColor" >
+                                            <path fill="#000000" fill-rule="evenodd" d="M8 3.517a1 1 0 011.62-.784l5.348 4.233a1 1 0 010 1.568l-5.347 4.233A1 1 0 018 11.983v-1.545c-.76-.043-1.484.003-2.254.218-.994.279-2.118.857-3.506 1.99a.993.993 0 01-1.129.096.962.962 0 01-.445-1.099c.415-1.5 1.425-3.141 2.808-4.412C4.69 6.114 6.244 5.241 8 5.042V3.517zm1.5 1.034v1.2a.75.75 0 01-.75.75c-1.586 0-3.066.738-4.261 1.835a8.996 8.996 0 00-1.635 2.014c.878-.552 1.695-.916 2.488-1.138 1.247-.35 2.377-.33 3.49-.207a.75.75 0 01.668.745v1.2l4.042-3.2L9.5 4.55z" clip-rule="evenodd"></path>
+                                        </svg> */}
 
-                        </div>
-
+                                        <svg className='w-3 h-3 md:w-5 md:h-5' viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="currentColor" fill-rule="evenodd" d="M8 3.517a1 1 0 011.62-.784l5.348 4.233a1 1 0 010 1.568l-5.347 4.233A1 1 0 018 11.983v-1.545c-.76-.043-1.484.003-2.254.218-.994.279-2.118.857-3.506 1.99a.993.993 0 01-1.129.096.962.962 0 01-.445-1.099c.415-1.5 1.425-3.141 2.808-4.412C4.69 6.114 6.244 5.241 8 5.042V3.517zm1.5 1.034v1.2a.75.75 0 01-.75.75c-1.586 0-3.066.738-4.261 1.835a8.996 8.996 0 00-1.635 2.014c.878-.552 1.695-.916 2.488-1.138 1.247-.35 2.377-.33 3.49-.207a.75.75 0 01.668.745v1.2l4.042-3.2L9.5 4.55z" clip-rule="evenodd"></path></g></svg>
+                                    </div>
+                                </a>
+                            </div>
+                        })}
                     </div>
-                    <ThemeToggler theme={theme} changeTheme={changeTheme}></ThemeToggler>
+                    <div className='animate-pulse'>
+                        <ThemeToggler theme={theme} changeTheme={changeTheme}></ThemeToggler>
+                    </div>
                 </div>
             </nav>
             {children}
@@ -83,6 +87,11 @@ const HomeLayout = ({ children }) => {
                     <a href="https://www.terraform.io" className="inline-flex justify-center items-center w-10 h-10 text-center text-gray-600 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-gray-800" >
                         <svg className="w-4 h-4" viewBox="0 0 16 16" fill="#5C4EE5">
                             <path d="M1 0v5.05l4.349 2.527V2.526L1 0zM10.175 5.344l-4.35-2.525v5.05l4.35 2.527V5.344zM10.651 10.396V5.344L15 2.819v5.05l-4.349 2.527zM10.174 16l-4.349-2.526v-5.05l4.349 2.525V16z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://www.terraform.io" className="inline-flex justify-center items-center w-10 h-10 text-center text-gray-600 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-gray-800" >
+                        <svg className="w-5 h-5" viewBox="0 0 16 16" fill="none">
+                            <path fill="#FC6D26" d="M14.975 8.904L14.19 6.55l-1.552-4.67a.268.268 0 00-.255-.18.268.268 0 00-.254.18l-1.552 4.667H5.422L3.87 1.879a.267.267 0 00-.254-.179.267.267 0 00-.254.18l-1.55 4.667-.784 2.357a.515.515 0 00.193.583l6.78 4.812 6.778-4.812a.516.516 0 00.196-.583z"></path><path fill="#E24329" d="M8 14.296l2.578-7.75H5.423L8 14.296z"></path><path fill="#FC6D26" d="M8 14.296l-2.579-7.75H1.813L8 14.296z"></path><path fill="#FCA326" d="M1.81 6.549l-.784 2.354a.515.515 0 00.193.583L8 14.3 1.81 6.55z"></path><path fill="#E24329" d="M1.812 6.549h3.612L3.87 1.882a.268.268 0 00-.254-.18.268.268 0 00-.255.18L1.812 6.549z"></path><path fill="#FC6D26" d="M8 14.296l2.578-7.75h3.614L8 14.296z"></path><path fill="#FCA326" d="M14.19 6.549l.783 2.354a.514.514 0 01-.193.583L8 14.296l6.188-7.747h.001z"></path><path fill="#E24329" d="M14.19 6.549H10.58l1.551-4.667a.267.267 0 01.255-.18c.115 0 .217.073.254.18l1.552 4.667z"></path>
                         </svg>
                     </a>
                 </div>

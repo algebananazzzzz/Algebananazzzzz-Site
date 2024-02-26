@@ -1,7 +1,6 @@
 import React from "react"
 import HomeLayout from "../components/layout/home-layout"
-import PageContent from '../content/experiences.yml'
-import parse from 'html-react-parser';
+import ExperienceContent from '../content/experience.yml'
 import Text from "../components/ui/text"
 import Svg from "../components/ui/svg"
 import Action from "../components/ui/action"
@@ -17,17 +16,8 @@ const ExperiencePage = () => {
               <h1 className="flex-none font-medium text-gray-800 dark:text-gray-200 text-2xl sm:text-3xl md:text-4xl lg:text-5xl inline-flex items-center">
                 Experiences
               </h1>
-              {PageContent.intro.text.map((value) => {
-                return <Text classes="mt-5 text-justify" text={value}>
-                </Text>
-              })}
-              <div className="flex flex-col space-y-4 mt-7">
-                {PageContent.endeavourList.map((value) => {
-                  return <Text svgFill={value.svg.fill} contrastLevel={2} svgSizeSm={value.svg.sizeSm} svgSizeMd={value.svg.sizeMd} svgViewBox={value.svg.viewbox} text={value.text} link={value.link}>
-                    {parse(value.svg.path)}
-                  </Text>
-                })}
-              </div>
+              <Text classes="mt-5 text-justify" text="Check out my cherished experiences that have shaped my journey as a developer">
+              </Text>
             </div>
             <div className="lg:col-span-3 mt-10 lg:mt-0 hidden lg:block">
               <svg viewBox="0 0 1024 1024" fill="#000000">
@@ -36,10 +26,10 @@ const ExperiencePage = () => {
             </div>
           </div>
           <ol className="mt-12 lg:mt-0 ml-3 lg:max-w-5xl text-justify relative border-l-2 border-solid border-gray-200 dark:border-gray-700">
-            {PageContent.experiences.map((value) => {
+            {ExperienceContent.map((value) => {
               const [[name, content]] = Object.entries(value);
 
-              return <li className="pb-10 ml-6">
+              return <li className="pb-12 ml-6">
                 <div className="inline-flex items-center">
                   <span className="absolute flex items-center text-center justify-center w-7 h-7 bg-blue-400 rounded-full -left-3.5 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
                     <Svg svgSizeSm={4} svgSizeMd={4} svgViewBox="0 0 24 24" svgFill="#f9fafb">
@@ -52,9 +42,9 @@ const ExperiencePage = () => {
                   {content.date}
                 </p>
                 {content.description.map((value) => {
-                  return <Text classes="mt-2" sizeMd="base" text={value}></Text>
+                  return <Text classes="mt-4" sizeMd="base" text={value}></Text>
                 })}
-                <div className="mt-4 flex gap-x-2">
+                <div className="mt-6 flex gap-x-2">
                   {content.actions.map((value) => {
                     return <Action text={value.text} asset={value.asset} link={value.link} color={value.color}></Action>
                   })}

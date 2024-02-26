@@ -1,0 +1,66 @@
+include:
+  - project: algebananazzzzz/gitlabtemplates
+    ref: main
+    file:
+      - Vars/aws-vars.yml
+      - Jobs/terraform-jobs.yml
+      - Jobs/gatsby-jobs.yml
+      - Jobs/awscli-jobs.yml
+
+variables:
+  ENV:
+    value: "dev"
+    options:
+      - "dev"
+      - "prd"
+    description: "The target environment for deployment"
+  TF_WORKSPACE:
+    value: $ENV-web
+  TF_DIR: $CI_PROJECT_DIR/infra
+  extends: .aws-vars:all
+
+stages:
+  - "build"
+  - "test"
+  - "deploy"
+
+gatsby-build:
+  stage: build
+  variables:
+    SOURCE_DIR: $CI_PROJECT_DIR
+  extends: 
+    - .gatsby:build
+
+terraform-plan:
+  stage: test
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+    TF_VAR_FILE: config/$ENV.tfvars
+  extends:
+    - .terraform:plan
+
+terraform-apply:
+  stage: deploy
+  dependencies:
+    - terraform-plan
+  after_script:
+    - echo "DEST_BUCKET_NAME=$(terraform output -raw origin_bucket_name)" >> output.env
+  artifacts:
+    reports:
+      dotenv: output.env
+  extends:
+    - .terraform:apply
+
+s3-deploy:
+  stage: deploy
+  dependencies:
+    - gatsby-build
+    - terraform-apply
+  before_script:
+    - echo $DEST_BUCKET_NAME
+    - ls $CI_PROJECT_DIR/public
+  variables:
+    SOURCE_DIR: $CI_PROJECT_DIR/public
+  extends:
+    - awscli:s3-sync
+  

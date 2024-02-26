@@ -1,8 +1,7 @@
 import React, { useState } from "react"
-import parse from 'html-react-parser';
 import HomeLayout from "../components/layout/home-layout"
 import VideoPopupComponent from "../components/video-popup"
-import PageContent from '../content/projects.yml'
+import ProjectContent from '../content/project.yml'
 import Text from "../components/ui/text"
 import SvgListed from "../components/ui/svgs";
 import Action from "../components/ui/action"
@@ -21,17 +20,8 @@ const ProjectPage = () => {
               <h1 className="flex-none font-medium text-gray-800 dark:text-gray-200 text-2xl sm:text-3xl md:text-4xl lg:text-5xl inline-flex items-center">
                 Projects
               </h1>
-              {PageContent.intro.text.map((value) => {
-                return <Text classes="mt-5 text-justify" text={value}>
-                </Text>
-              })}
-              <div className="flex flex-col space-y-4 mt-7">
-                {PageContent.endeavourList.map((value) => {
-                  return <Text svgFill={value.svg.fill} contrastLevel={2} svgSizeSm={value.svg.sizeSm} svgSizeMd={value.svg.sizeMd} svgViewBox={value.svg.viewbox} text={value.text} link={value.link}>
-                    {parse(value.svg.path)}
-                  </Text>
-                })}
-              </div>
+              <Text classes="mt-5 text-justify" text="Explore my software development projects, where I channel my passion to create solutions to empower and benefit those in my community.">
+              </Text>
               {/* <Link to="/motivations" className="py-3 px-4 inline-flex justify-center items-center rounded-md bg-indigo-200 font-semibold text-gray-500 hover:text-white hover:bg-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all text-sm dark:bg-indigo-700 dark:hover:bg-indigo-600 dark:focus:ring-indigo-600 dark:text-white dark:focus:ring-offset-indigo-800">
                   Explore the driving force behind my projects
                 </Link> */}
@@ -44,7 +34,7 @@ const ProjectPage = () => {
           </div>
 
           <div className="pt-12 lg:pt-5 grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {PageContent.projects.map((value) => {
+            {ProjectContent.projects.map((value) => {
               const [[name, content]] = Object.entries(value);
 
               return <div className="group flex flex-col bg-white hover:bg-gray-200 hover:border-gray-300 border dark:border-gray-700 dark:hover:bg-gray-600 dark:hover:border-gray-500 transition-all duration-250  shadow-sm rounded-md px-4 md:px-5 dark:bg-gray-800 dark:shadow-slate-700/[.7]">
@@ -56,7 +46,7 @@ const ProjectPage = () => {
                   <Text classes="mt-2" sizeMd="base" text={content.description}></Text>
                   <div className="mt-2 flex items-center gap-x-5 p-2">
                     {content.svgIcons.map((value) => {
-                      return <SvgListed svgName={value.svgName} svgSizeSm={value.sizeSm} svgSizeMd={value.sizeMd} redirect={value.redirect}>
+                      return <SvgListed svgName={value.svgName} svgSizeSm={5} redirect={value.redirect}>
                       </SvgListed>
                     })}
                   </div>
@@ -106,7 +96,7 @@ const ProjectPage = () => {
           <Text classes="pt-5" text=" Upcoming...">
           </Text>
           <div className="pt-5 lg:pt-7 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {PageContent.upcoming_projects.map((value) => {
+            {ProjectContent.upcoming_projects.map((value) => {
               const [[name, content]] = Object.entries(value);
               return <div className="flex flex-col bg-white border shadow-sm rounded-md p-4 md:p-5 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
                 <p className="text-sm font-medium uppercase text-fuchsia-500 dark:text-fuchsia-500">
