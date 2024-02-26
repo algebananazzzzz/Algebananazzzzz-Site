@@ -62,5 +62,5 @@ s3-deploy:
   variables:
     SOURCE_DIR: $CI_PROJECT_DIR/public
   extends:
-    - awscli:s3-sync
+    - .awscli:s3-sync
   
