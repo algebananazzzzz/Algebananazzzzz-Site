@@ -45,7 +45,7 @@ terraform-apply:
     - terraform-plan
   after_script:
     - cd $CI_PROJECT_DIR
-    - echo "DEST_BUCKET_NAME=$(terraform output -raw origin_bucket_name)" > output.env
+    - echo "DEST_BUCKET_NAME=dev-web-s3-algebananazzzzz-site" > output.env
   artifacts:
     reports:
       dotenv: $CI_PROJECT_DIR/output.env
