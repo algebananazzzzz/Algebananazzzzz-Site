@@ -44,10 +44,11 @@ terraform-apply:
   dependencies:
     - terraform-plan
   after_script:
-    - echo "DEST_BUCKET_NAME=$(terraform output -raw origin_bucket_name)" >> output.env
+    - cd $CI_PROJECT_DIR
+    - echo "DEST_BUCKET_NAME=$(terraform output -raw origin_bucket_name)" > output.env
   artifacts:
     reports:
-      dotenv: output.env
+      dotenv: $CI_PROJECT_DIR/output.env
   extends:
     - .terraform:apply
 
