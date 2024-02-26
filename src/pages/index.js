@@ -27,9 +27,9 @@ const IndexPage = () => {
               <h1 className="flex-none font-medium text-gray-800 dark:text-gray-200 text-3xl md:text-4xl lg:text-5xl inline-flex items-center">
                 Hi, I'm Daniel!
               </h1>
-              <Text classes="mt-5 text-justify" text="Welcome to my page where I document my Skills, Projects, and Experiences!">
+              <Text classes="mt-5 text-justify" text="Welcome to my portfolio page! 🌱">
               </Text>
-              <Text classes="mt-5 text-justify" text="As an aspiring software developer, I'm fascinated by how new technologies change paradigms and love developing impactful projects to benefit others with my skills.">
+              <Text classes="mt-5 text-justify" text="As an aspiring solution architect, I'm fascinated by how new technologies change paradigms and love developing impactful projects to benefit others. 🚀">
               </Text>
             </div>
             <div className="lg:col-span-3 mt-10 lg:mt-0 hidden lg:block">
