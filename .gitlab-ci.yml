@@ -44,6 +44,7 @@ terraform-apply:
   dependencies:
     - terraform-plan
   after_script:
+    - terraform output -raw origin_bucket_name
     - echo "DEST_BUCKET_NAME=$(terraform output -raw origin_bucket_name)" > $CI_PROJECT_DIR/output.env
     - cat $CI_PROJECT_DIR/output.env
   artifacts:
