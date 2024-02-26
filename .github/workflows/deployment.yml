@@ -18,7 +18,7 @@ jobs:
       - uses: actions/upload-artifact@master
         with:
           name: build-artifact
-          path: public/
+          path: public
   deploy:
     needs:
       - build
@@ -30,7 +30,7 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: build-artifact
-          path: public/
+          path: public
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
