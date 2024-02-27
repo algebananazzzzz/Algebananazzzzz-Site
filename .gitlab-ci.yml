@@ -14,7 +14,7 @@ variables:
       - "dev"
       - "prd"
     description: "The target environment for deployment"
-  TF_WORKSPACE:
+  WORKSPACE:
     value: $ENV-web
   TF_DIR: $CI_PROJECT_DIR/infra
   extends: .aws-vars:all

@@ -43,17 +43,16 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ vars.AWS_REGION }}
       - run: echo "ENV=${{ inputs.env > '' && inputs.env || 'dev' }}" >> $GITHUB_ENV
-      - run: echo "TF_WORKSPACE=$ENV-web" >> $GITHUB_ENV
       - uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: "1.5.0"
-      - name: Terraform Workspace
-        working-directory: infra
-        run: terraform workspace new $TF_WORKSPACE || echo "Workspace $TF_WORKSPACE already exists or cannot be created"
       - name: Terraform Init
         id: init
         working-directory: infra
         run: terraform init -input=false
+      - name: Terraform Workspace
+        working-directory: infra
+        run: terraform workspace select -or-create $ENV-web
       - name: Terraform Plan
         id: plan
         working-directory: infra
