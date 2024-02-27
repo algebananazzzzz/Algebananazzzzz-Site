@@ -49,7 +49,7 @@ jobs:
           terraform_version: "1.5.0"
       - name: Terraform Workspace
         working-directory: infra
-        run: terraform workspace create $TF_WORKSPACE || echo "Workspace $TF_WORKSPACE already exists or cannot be created"
+        run: terraform workspace new $TF_WORKSPACE || echo "Workspace $TF_WORKSPACE already exists or cannot be created"
       - name: Terraform Init
         id: init
         working-directory: infra
