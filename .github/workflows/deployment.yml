@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      env:
+        description: The target environment for deployment
+        type: string
+        required: true
 
 jobs:
   build:
@@ -36,7 +42,8 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ vars.AWS_REGION }}
-      - run: echo "ENV=dev" >> $GITHUB_ENV
+      - run: echo "ENV=${{ inputs.env > '' && inputs.env || 'dev' }}" >> $GITHUB_ENV
+      - run: echo $ENV
       - run: echo "TF_WORKSPACE=$ENV-web" >> $GITHUB_ENV
       - uses: hashicorp/setup-terraform@v3
         with:
